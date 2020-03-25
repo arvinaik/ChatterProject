@@ -78,7 +78,7 @@ function uploadChit(req, res) {
   });
   tweet.save();
 
-  res.redirect("https://protected-sea-89087.herokuapp.com/");
+  res.redirect("/");
   //  res.send("Thank you for your kind words!");
 }
 
