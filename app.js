@@ -13,7 +13,7 @@ app.use(
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/ChatterProject", {
+mongoose.connect("mongodb+srv://Gary_Peabody:P@5sword@chitter-swg4k.mongodb.net/ChatterProject", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -78,7 +78,7 @@ function uploadChit(req, res) {
   });
   tweet.save();
 
-  res.redirect("/");
+  res.redirect("https://protected-sea-89087.herokuapp.com/");
   //  res.send("Thank you for your kind words!");
 }
 
