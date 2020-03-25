@@ -82,7 +82,7 @@ function uploadChit(req, res) {
   //  res.send("Thank you for your kind words!");
 }
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Server up");
 });
 
