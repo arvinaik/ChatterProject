@@ -5,6 +5,9 @@ $("#chitText_textbox").click(function() {
 $.getJSON("/allTweets.json", function(data) {
   $.each(data, function(key, val) {
     const ppsmol = JSON.parse(val);
+    
+    
+
 
     for (let index = 0; index < 5; index++) {
       const element = ppsmol[index];
@@ -18,6 +21,9 @@ $.getJSON("/allTweets.json", function(data) {
 
       $(newChit).insertBefore("#ChitLoader");
     }
+
+    if(ppsmol.length <= 5){ $(#ChitLoader.hide())}
+
     let chitCount = 5;
     $("#ChitLoader").click(function() {
       console.log(chitCount);
