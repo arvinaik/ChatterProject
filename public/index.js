@@ -22,7 +22,7 @@ $.getJSON("/allTweets.json", function(data) {
       $(newChit).insertBefore("#ChitLoader");
     }
 
-    if(ppsmol.length <= 5){ $(#ChitLoader.hide())}
+    if(ppsmol.length <= 5){ $(#ChitLoader).hide())}
 
     let chitCount = 5;
     $("#ChitLoader").click(function() {
