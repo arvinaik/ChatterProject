@@ -1,0 +1,40 @@
+<%- include("header"); -%>
+
+    <form action="/" method="POST" autocomplete="off">
+      <div class="input-group input-group-lg">
+        <textarea
+          class="form-control"
+          name="chitText"
+          id="chitText_textbox"
+          aria-label="chit content input box"
+          aria-describedby="inputGroup-sizing-lg"
+          rows="3"
+          placeholder="What are you up to today?"
+        ></textarea>
+      </div>
+      <br />
+      <div class="input-group input-group-sm">
+        <label for="userName_textbox">User:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="userName"
+          id="userName_textbox"
+          aria-label="chit username input box"
+          aria-describedby="inputGroup-sizing-sm"
+        />
+        <input type="submit" class="btn btn-secondary" name="submitNewChit" />
+      </div>
+      <br />
+    </form>
+    <br />
+
+    <div id="chitterBox" class="container">
+      <button id="ChitLoader" class="btn btn-info">Load more Chatters</button>
+    </div>
+    <br />
+
+    <script src="/home.js"></script>
+
+
+    <%- include('footer'); -%>
