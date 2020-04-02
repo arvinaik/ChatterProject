@@ -5,6 +5,7 @@ const app = express();
 const fs = require("fs");
 const autoIncrement = require("mongoose-auto-increment");
 
+
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -81,6 +82,16 @@ function uploadChit(req, res) {
   res.redirect("/");
   //  res.send("Thank you for your kind words!");
 }
+
+
+app.get("/userFinder", loadUserPage)
+
+function loadUserPage(req,res){
+  const user = req.query.userToFind;
+  res.send(choice)
+  
+}
+
 
 app.listen(process.env.PORT || 3000, function() {
   console.log("Server up");

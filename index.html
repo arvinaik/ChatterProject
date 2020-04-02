@@ -14,7 +14,17 @@
   <body>
     <nav class="navbar navbar-light bg-info">
       <a class="navbar-brand" href="#">Welcome to Chatter!</a>
+      <form action="/userFinder" method="GET">
+        <div class="form-group mx-sm-3 mb-2">
+          <input type="text" name="userToFind" placeholder="Who are you looking for?" />
+          <button type="submit" name="userFinderSubmit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        
+      </form>
     </nav>
+
     <br />
 
     <form action="/" method="POST" autocomplete="off">
@@ -40,7 +50,7 @@
           aria-label="chit username input box"
           aria-describedby="inputGroup-sizing-sm"
         />
-        <input type="submit" class="btn btn-secondary" />
+        <input type="submit" class="btn btn-secondary" name="submitNewChit" />
       </div>
       <br />
     </form>
@@ -71,6 +81,11 @@
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://kit.fontawesome.com/855fe815c1.js"
       crossorigin="anonymous"
     ></script>
 
