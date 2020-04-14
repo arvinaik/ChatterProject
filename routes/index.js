@@ -32,9 +32,9 @@ const Chit= mongoose.model("empty", emptySchema);
 
 function loadUserChits(userSearched) {
     
-    Chit.find({userName: userSearched}, "content userName")
+    Chit.find({userName: userSearched}, "_id content userName postTime")
       .lean()
-      .sort({ _id: -1 })
+      .sort({ postTime: -1 })
       .exec(function(err, entries) {
         fs.writeFile("public/userTweets.json", "[]", function(err) {
           console.log("blank slate");

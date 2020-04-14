@@ -25,16 +25,13 @@ mongoose.connect(
 
 const ChitterSchema = new mongoose.Schema({
   userName: { type: String, minlength: 1 },
-  content: { type: String, minlength: 1, maxlength: 280 }
+  content: { type: String, minlength: 1, maxlength: 280 },
+  postTime: Date
 });
 
 autoIncrement.initialize(mongoose.connection);
 
-ChitterSchema.plugin(autoIncrement.plugin, {
-  model: "Chitter",
-  startAt: 0,
-  incrementBy: 1
-});
+
 module.exports = mongoose.model("Chitter", ChitterSchema);
 const Chit = mongoose.model("Chitter", ChitterSchema);
 
@@ -44,9 +41,9 @@ app.get("/", function(req, res) {
 });
 
 function loadChits() {
-  Chit.find({}, "content userName")
+  Chit.find({}, "_id content userName postTime")
     .lean()
-    .sort({ _id: -1 })
+    .sort({ postTime: -1 })
     .exec(function(err, entries) {
       fs.writeFile("public/allTweets.json", "[]", function(err) {
         console.log("blank slate");
@@ -74,14 +71,26 @@ app.post("/", uploadChit);
 function uploadChit(req, res) {
   const tweet = new Chit({
     userName: req.body.userName,
-    content: req.body.chitText
+    content: req.body.chitText,
+    postTime: Date.now()
   });
   tweet.save();
 
   res.redirect("/");
-  //  res.send("Thank you for your kind words!");
+  
 }
+
+
+app.post("/deleteTweet", function(req,res){
+  let tweet_ID = req.body.deleteChitter
+  Chit.findByIdAndDelete(tweet_ID,function(err){});
+  
+  res.redirect("back")
+})
+
 
 app.listen(process.env.PORT || 3000, function() {
   console.log("Server up");
 });
+
+

@@ -1,3 +1,7 @@
+$("#Welcome_Banner").click(function() {
+  document.location.href = "/";
+});
+
 $.getJSON("/userTweets.json", function(data) {
     $.each(data, function(key, val) {
       const ppsmol = JSON.parse(val);
@@ -9,11 +13,13 @@ $.getJSON("/userTweets.json", function(data) {
         const element = ppsmol[index];
         console.log(element);
         const newChit =
-          '<div class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' +
-          element.userName +
-          '</h5><p class="card-text">' +
-          element.content +
-          "</p></div></div>";
+        '<div class="card" style="width: 18rem;"><div class="card-body" ><h5 class="card-title" >' +
+        element.userName +
+        '</h5><p class="card-text">' +
+        element.content +
+        '</p><p class="card-text">' +
+        element.postTime + " " +
+        '<form action="/deleteTweet" method = "post"><button type="submit" name="deleteChitter" value = "' + element._id + '"><i class="fas fa-trash"></i></button></form></p></div></div>';
   
         $(newChit).insertBefore("#ChitLoader");
       }
@@ -28,11 +34,13 @@ $.getJSON("/userTweets.json", function(data) {
         for (let index = chitCount; index < chitCount + 5; index++) {
           const element = ppsmol[index];
           const newChit =
-            '<div class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' +
-            element.userName +
-            '</h5><p class="card-text">' +
-            element.content +
-            "</p></div></div>";
+          '<div class="card" style="width: 18rem;"><div class="card-body" ><h5 class="card-title" >' +
+          element.userName +
+          '</h5><p class="card-text">' +
+          element.content +
+          '</p><p class="card-text">' +
+          element.postTime + " " +
+          '<form action="/deleteTweet" method = "post"><button type="submit" name="deleteChitter" value = "' + element._id + '"><i class="fas fa-trash"></i></button></form></p></div></div>';
   
           $(newChit).insertBefore("#ChitLoader");
         }
